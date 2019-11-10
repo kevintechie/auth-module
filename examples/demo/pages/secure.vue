@@ -23,16 +23,28 @@
       <b-button @click="$auth.fetchUser()">Fetch User</b-button>
       <b-button @click="$auth.logout()">Logout</b-button>
     </b-btn-group>
+  <div><pre>{{something}}</pre></div>
   </div>
 </template>
 
 <script>
+// import VueJsonPretty from 'vue-json-pretty';
 export default {
-  middleware: ['auth'],
+  data() {
+    something: null;
+  },
+  middleware: ["auth"],
   computed: {
     state() {
-      return JSON.stringify(this.$auth.$state, undefined, 2)
+      return JSON.stringify(this.$auth.$state, undefined, 2);
     }
+  },
+  async asyncData({ $axios }) {
+    const results = await $axios.$get(
+      "https://zynu7bap3b.execute-api.us-east-1.amazonaws.com/latest/locked"
+    );
+    const something = JSON.stringify(results, null, 2);
+    return { something };
   }
-}
+};
 </script>

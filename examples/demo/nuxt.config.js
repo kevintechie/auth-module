@@ -15,35 +15,31 @@ module.exports = {
   proxy: {
     '/api': 'http://localhost:3000'
   },
+  plugins: [
+    {
+      src: '~/plugins/VueJSONPretty',
+      ssr: false
+    }
+  ],
   auth: {
     redirect: {
       callback: '/callback'
     },
     strategies: {
-      local: {
-        endpoints: {
-          login: { propertyName: 'token.accessToken' }
-        }
-      },
-      auth0: {
-        domain: 'nuxt-auth.auth0.com',
-        client_id: 'q8lDHfBLJ-Fsziu7bf351OcYQAIe3UJv'
-      },
-      facebook: {
-        client_id: '1671464192946675',
-        userinfo_endpoint: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email,birthday',
-        scope: ['public_profile', 'email', 'user_birthday']
-      },
-      google: {
-        client_id:
-          '956748748298-kr2t08kdbjq3ke18m3vkl6k843mra1cg.apps.googleusercontent.com'
-      },
-      github: {
-        client_id: process.env.GITHUB_CLIENT_ID,
-        client_secret: process.env.GITHUB_CLIENT_SECRET
-      },
-      twitter: {
-        client_id: 'FAJNuxjMTicff6ciDKLiZ4t0D'
+      local: false,
+      shibboleth: {
+        _scheme: 'oauth2',
+        authorization_endpoint: 'https://fosterstage.auth.us-west-2.amazoncognito.com/oauth2/authorize',
+        // userinfo_endpoint: 'https://r4cq2hhfv4.execute-api.us-west-1.amazonaws.com/latest/userInfo',
+        userinfo_endpoint: 'https://fosterstage.auth.us-west-2.amazoncognito.com/oauth2/userInfo',
+        scope: ['email', 'openid', 'profile', 'aws.cognito.signin.user.admin'],
+        access_token_endpoint: 'https://fosterstage.auth.us-west-2.amazoncognito.com/oauth2/token',
+        response_type: 'code',
+        token_type: 'Bearer',
+        redirect_uri: 'http://localhost:3000/callback',
+        client_id: '3nic7mc5dimiu0l35d1glpqnor',
+        token_key: 'access_token',
+        grant_type: 'authorization_code'
       }
     }
   }
