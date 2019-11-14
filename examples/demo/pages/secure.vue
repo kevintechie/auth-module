@@ -28,7 +28,6 @@
 </template>
 
 <script>
-// import VueJsonPretty from 'vue-json-pretty';
 export default {
   data() {
     something: null;

@@ -19,10 +19,6 @@ module.exports = {
     '/api': 'http://localhost:3000'
   },
   plugins: [
-    {
-      src: '~/plugins/VueJSONPretty',
-      ssr: false
-    }
   ],
   auth: {
     redirect: {
