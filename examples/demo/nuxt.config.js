@@ -1,4 +1,8 @@
+const config = require('config')
 const { resolve } = require('path')
+
+const cognitoConfig = config.get('cognito')
+const protectedApi = config.get('protectedApi')
 
 module.exports = {
   rootDir: resolve(__dirname, '../..'),
@@ -81,7 +85,30 @@ module.exports = {
         responseType: 'code',
         grantType: 'authorization_code',
         clientId: 'test-client'
+      },
+      cognito: {
+        _scheme: 'oauth2',
+        endpoints: {
+          authorization: `${cognitoConfig.get('authBaseUrl')}/oauth2/authorize`,
+          token: `${cognitoConfig.get('authBaseUrl')}/oauth2/token`,
+          userInfo: cognitoConfig.get('userInfo')
+        },
+        token: {
+          property: 'id_token',
+          type: 'Bearer'
+        },
+        refreshToken: {
+          property: 'refresh_token',
+          maxAge: 60 * 60 * 24 * 30
+        },
+        scope: ['openid', 'profile', 'email'],
+        responseType: 'code',
+        clientId: cognitoConfig.get('clientId'),
+        grantType: 'authorization_code'
       }
+    },
+    env: {
+      PROTECTED_API: protectedApi
     }
   }
 }

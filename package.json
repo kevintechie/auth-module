@@ -42,7 +42,9 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.5",
+    "@types/config": "0.0.36",
     "body-parser": "^1.19.0",
+    "config": "^3.3.0",
     "consola": "^2.11.3",
     "cookie": "^0.4.0",
     "defu": "^1.0.0",
@@ -54,6 +56,7 @@
   },
   "devDependencies": {
     "@nuxtjs/toast": "latest",
+    "@types/js-yaml": "^3.12.2",
     "babel-plugin-transform-class-properties": "latest",
     "babel-plugin-transform-decorators-legacy": "latest",
     "bootstrap-vue": "latest",
@@ -70,6 +73,7 @@
     "express": "latest",
     "express-jwt": "latest",
     "jest": "latest",
+    "js-yaml": "^3.13.1",
     "jsdom": "latest",
     "lodash.get": "latest",
     "nuxt-class-component": "latest",

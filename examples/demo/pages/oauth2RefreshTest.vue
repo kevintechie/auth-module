@@ -57,7 +57,8 @@ export default {
         'ZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm' +
         '9qZWN0IEFkbWluaXN0cmF0b3IiXX0.dVuTXohoUOOhJWoinmgmBxVp2G_bm_5C0Yk6GqH4JbU',
       tokenExpiresAt: null,
-      refreshTokenExpiresAt: null
+      refreshTokenExpiresAt: null,
+      oauth2Strategies: ['oauth2mock', 'cognito']
     }
   },
   created () {
@@ -65,7 +66,7 @@ export default {
   },
   computed: {
     isLoggedInWithOauth2 () {
-      return this.$auth.$state.strategy === 'oauth2mock' && this.$auth.$state.loggedIn
+      return this.oauth2Strategies.includes(this.$auth.$state.strategy) && this.$auth.$state.loggedIn
     }
   },
   methods: {
@@ -107,7 +108,7 @@ export default {
     },
     getTokenExpirationDateString (tokenExpiration) {
       try {
-        return new Date(tokenExpiration).toDateString()
+        return new Date(tokenExpiration).toString()
       } catch (e) {
         return '-'
       }

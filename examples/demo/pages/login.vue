@@ -67,7 +67,8 @@ export default {
       { key: 'auth0', name: 'Auth0', color: '#ec5425' },
       { key: 'google', name: 'Google', color: '#4284f4' },
       { key: 'facebook', name: 'Facebook', color: '#3c65c4' },
-      { key: 'github', name: 'GitHub', color: '#202326' }
+      { key: 'github', name: 'GitHub', color: '#202326' },
+      { key: 'cognito', name: 'AWS Cognito', color: 'purple'}
     ]),
     redirect() {
       return (

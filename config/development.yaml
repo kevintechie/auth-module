@@ -1,0 +1,7 @@
+---
+  cognito:
+    authBaseUrl: 'https://fosterstage.auth.us-west-2.amazoncognito.com'
+    clientId: '3nic7mc5dimiu0l35d1glpqnor'
+    userPoolId: 'us-west-2_VN1yuNV06'
+    userInfo: 'https://r4cq2hhfv4.execute-api.us-west-1.amazonaws.com/latest/userInfo'
+  protectedApi: 'https://zynu7bap3b.execute-api.us-east-1.amazonaws.com/latest/locked'
