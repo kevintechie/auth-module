@@ -96,11 +96,13 @@ export default {
       }
     },
     refreshTokens() {
+      console.log('starting refresh')
       this.$auth.refreshTokens().catch(e => {
         if (e.name === 'ExpiredAuthSessionError') {
           console.log('Caught ExpiredAuthSessionError. This is ok. Sessions can expire.')
         } else throw e
       })
+      this.updateDisplayedTokens()
     },
     updateDisplayedTokens () {
       this.tokenExpiresAt = this.getTokenExpirationDateString(this.$auth.token._getExpiration())
