@@ -22,6 +22,7 @@
       <br>
       <b-btn-group>
         <b-btn variant="info" @click="sendRequests">Send requests</b-btn>
+        <b-btn class="ml-4" variant="info" @click="sendCognitoRequests">Send Cognito Requests</b-btn>
         <b-btn class="ml-4" variant="info" @click="refreshTokens">Refresh tokens</b-btn>
         <b-btn class="ml-4" variant="info" @click="invalidateToken">Invalidate token</b-btn>
         <b-btn class="ml-4" variant="info" @click="invalidateBothTokens">Invalidate token and refresh token</b-btn>
@@ -95,8 +96,10 @@ export default {
         } else throw e
       }
     },
+    async sendCognitoRequests() {
+      const request = this.$auth.ctx.$axios.get(process.env.PROTECTED_API);
+    },
     refreshTokens() {
-      console.log('starting refresh')
       this.$auth.refreshTokens().catch(e => {
         if (e.name === 'ExpiredAuthSessionError') {
           console.log('Caught ExpiredAuthSessionError. This is ok. Sessions can expire.')

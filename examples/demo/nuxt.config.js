@@ -106,9 +106,9 @@ module.exports = {
         clientId: cognitoConfig.get('clientId'),
         grantType: 'authorization_code'
       }
-    },
-    env: {
-      PROTECTED_API: protectedApi
     }
+  },
+  env: {
+    PROTECTED_API: protectedApi
   }
 }
