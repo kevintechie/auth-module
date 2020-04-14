@@ -34,7 +34,7 @@ auth: {
           authorization: 'https://accounts.google.com/o/oauth2/auth',
           token: undefined,
           userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo',
-          logout: 'https:'
+          logout: 'https://example.com/logout'
       },
       token: {
           property: 'access_token',
@@ -75,7 +75,7 @@ If using Google code authorization flow (`responseType: 'code'`) provide a URI f
 
 If a `false` value is set, we only do login without fetching user profile.
 
-#### `loogout`
+#### `logout`
 
 Endpoint to logout user from Oauth2 provider's system. Ensures that a user is signed out of the current authorization session.
 
