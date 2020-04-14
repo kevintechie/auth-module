@@ -91,7 +91,8 @@ module.exports = {
         endpoints: {
           authorization: `${cognitoConfig.get('authBaseUrl')}/oauth2/authorize`,
           token: `${cognitoConfig.get('authBaseUrl')}/oauth2/token`,
-          userInfo: cognitoConfig.get('userInfo')
+          userInfo: cognitoConfig.get('userInfo'),
+          logout: `${cognitoConfig.get('authBaseUrl')}/logout`
         },
         token: {
           property: 'id_token',

@@ -33,7 +33,8 @@ auth: {
       endpoints: {
           authorization: 'https://accounts.google.com/o/oauth2/auth',
           token: undefined,
-          userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo'
+          userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo',
+          logout: 'https:'
       },
       token: {
           property: 'access_token',
@@ -72,8 +73,11 @@ While not a part of oauth2 spec, almost all oauth2 providers expose this endpoin
 
 If using Google code authorization flow (`responseType: 'code'`) provide a URI for a service that accepts a POST request with JSON payload containing a `code` property, and returns tokens [exchanged by provider](https://developers.google.com/identity/protocols/OpenIDConnect#exchangecode) for `code`. See [source code](https://github.com/nuxt-community/auth-module/blob/dev/lib/schemes/oauth2.js)
 
-
 If a `false` value is set, we only do login without fetching user profile.
+
+#### `loogout`
+
+Endpoint to logout user from Oauth2 provider's system. Ensures that a user is signed out of the current authorization session.
 
 ### token
 
